@@ -1,14 +1,25 @@
 //Local
 
-export const URL = "http://localhost:8080/3_sem_eksamensprojekt";
+//export const URL = "http://localhost:8080/3_sem_eksamensprojekt";
 export const URLJokes = "http://localhost:8080/3_sem_eksamensprojekt/api/jokes";
 export const URLScrapeSequential = "http://localhost:8080/3_sem_eksamensprojekt/api/scrape/sequential";
 export const URLScrapeParallel = "http://localhost:8080/3_sem_eksamensprojekt/api/scrape/parallel";
-export const AllUsers = "http://localhost:8080/3_sem_eksamensprojekt/api/info/person/all";
+//export const AllUsers = "http://localhost:8080/3_sem_eksamensprojekt/api/info/person/all";
 export const DeleteUser = "http://localhost:8080/3_sem_eksamensprojekt/api/info/delete/";
 export const UpdateUser = "http://localhost:8080/3_sem_eksamensprojekt/api/info/person";
 export const GetUser = "http://localhost:8080/3_sem_eksamensprojekt/api/info/person/";
 export const AddUser = "http://localhost:8080/3_sem_eksamensprojekt/api/info";
+
+
+//local dog
+export const URL = "http://localhost:8080/3_sem_eksamensprojekt";
+export const AllUsers = "http://localhost:8080/3_sem_eksamensprojekt/api/user/all";
+export const AddDog = "http://localhost:8080/3_sem_eksamensprojekt/api/dog";
+export const AddDogToOwner = "http://localhost:8080/3_sem_eksamensprojekt/api/user/addDog/";
+export const DeleteDog = "http://localhost:8080/3_sem_eksamensprojekt/api/dog/removeDog/";
+export const GetDogs = "http://localhost:8080/3_sem_eksamensprojekt/api/user/username/Robert Dølhus";
+export const UpdateDog = "http://localhost:8080/3_sem_eksamensprojekt/api/info/person/";
+export const GetDog = "http://localhost:8080/3_sem_eksamensprojekt/api/dog/id/";
 
 
 /*

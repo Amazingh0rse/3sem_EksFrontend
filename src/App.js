@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
 import AllJokes from "./AllJokes";
 import AllScrape from "./AllScrape";
+import MyDog from "./MyDog";
 import AdminCrud from "./AdminCRUD";
 import Login from "./Login";
 import { Switch, Route, NavLink, useHistory } from "react-router-dom";
@@ -24,6 +25,12 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
           {isLoggedIn && (
             <NavLink className="nav-link" activeClassName="selected" to="/scrape" href="/scrape">
               Scrape
+            </NavLink>
+          )}
+
+          {isLoggedIn && (
+            <NavLink className="nav-link" activeClassName="selected" to="/dog" href="/dog">
+              My Dog
             </NavLink>
           )}
           {isAdmin && (
@@ -90,6 +97,9 @@ export default function App() {
           <Route path="/scrape">
             <Scrape />
           </Route>
+          <Route path="/dog">
+            <Dog />
+          </Route>
           <Route path="/admin">
             <Admin />
           </Route>
@@ -130,6 +140,14 @@ function Scrape() {
   return (
     <div className="pageContent">
       <AllScrape />
+    </div>
+  );
+}
+
+function Dog() {
+  return (
+    <div className="pageContent">
+      <MyDog />
     </div>
   );
 }
