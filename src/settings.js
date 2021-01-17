@@ -17,8 +17,8 @@ export const AllUsers = "http://localhost:8080/3_sem_eksamensprojekt/api/user/al
 export const AddDog = "http://localhost:8080/3_sem_eksamensprojekt/api/dog";
 export const AddDogToOwner = "http://localhost:8080/3_sem_eksamensprojekt/api/user/addDog/";
 export const DeleteDog = "http://localhost:8080/3_sem_eksamensprojekt/api/dog/removeDog/";
-export const GetDogs = "http://localhost:8080/3_sem_eksamensprojekt/api/user/username/Robert Dølhus";
-export const UpdateDog = "http://localhost:8080/3_sem_eksamensprojekt/api/info/person/";
+export const GetDogs = "http://localhost:8080/3_sem_eksamensprojekt/api/user/username/";
+export const UpdateDog = "http://localhost:8080/3_sem_eksamensprojekt/api/dog/update/";
 export const GetDog = "http://localhost:8080/3_sem_eksamensprojekt/api/dog/id/";
 
 

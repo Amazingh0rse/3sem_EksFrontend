@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { AllUsers, DeleteUser, UpdateUser, GetUser, AddUser, GetDogs, GetDog,AddDog, AddDogToOwner, DeleteDog, UpdateDog } from "./settings";
+import { GetDogs, GetDog,AddDog, AddDogToOwner, DeleteDog, UpdateDog } from "./settings";
 import facade from "./apiFacade";
 import {
   Container,
   Row,
   Col,
   Button,
-  InputGroup,
-  FormControl,
   Table,
   Form
 } from "react-bootstrap";
@@ -30,7 +28,7 @@ function MyDog() {
 
   const [allDogs, setAllDogs] = useState([]);
   const [dog, setDog] = useState(initialValues);
-  const [dogID,setDogId] = useState([]);
+  const [dogID,setDogID] = useState([]);
 
   
 
@@ -50,7 +48,7 @@ function MyDog() {
   };
 
   const fetchDogs = () => {
-    fetch(GetDogs )
+    fetch(GetDogs+parseJwtName(facade.getToken()) )
       .then((res) => res.json())
       .then((data) => {
         setAllDogs(data);
@@ -62,9 +60,7 @@ function MyDog() {
     const options = makeOptions("DELETE");
 
     fetch(DeleteDog + id, options)
-      .then((res) => res.json())
       .then((data) => {
-        setAllDogs(data);
         fetchDogs();
       })
       .catch((err) => {
@@ -78,7 +74,7 @@ function MyDog() {
 
   const updateForm = (dog) => {
     const options = makeOptions("PUT", dog);
-
+    console.log(dog)
     fetch(UpdateDog, options)
       .then((res) => fetchDogs())
       .catch((err) => {
@@ -95,7 +91,7 @@ function MyDog() {
       .then((res) => res.json())
       .then((data) => {
         setDog(data);
-        console.log(data);
+        //console.log(data);
       })
       .catch((err) => {
         if (err.status) {
@@ -110,12 +106,18 @@ function MyDog() {
     const options = makeOptions("POST", dog);
     const options2 = makeOptions("PUT", dog);
     
+    var id = null;
+
     fetch(AddDog, options)
       .then((res) => res.json())
-      .then((data)=> {setDogId(data.id);
-      console.log(data.id)})
+      .then((data)=> {
 
-      .then((res) => fetchDogs())
+        //following is due to asynchronous calls
+        setDogID(data.id);
+        id=data.id;
+        console.log(data.id,dogID)})
+
+        
       .catch((err) => {
         if (err.status) {
           err.fullError.then((e) => console.log(e.detail));
@@ -123,20 +125,18 @@ function MyDog() {
           console.log("Network error");
         }
        
-      })
-       fetch(AddDogToOwner+parseJwtName(facade.getToken())+"/"+dogID, options2)
-        .then((res) => res.json())
+      }).then((res)=> 
+       fetch(AddDogToOwner+parseJwtName(facade.getToken())+"/"+id, options2)
+        
         .then((res) => fetchDogs())
         .catch((err) => {
         if (err.status) {
           err.fullError.then((e) => console.log(e.detail));
         } else {
-          console.log("Network error");
+          console.log("Network error",err);
         }
-      })
-      
-      
-      
+      }))
+      .then((res) => fetchDogs())
       ;
   };
 
@@ -185,8 +185,9 @@ function MyDog() {
           
           
           <Button onClick={() => addDog()}>Add</Button>
+          &nbsp;
           <Button variant="primary" type="submit">
-            Submit
+            Update
           </Button> &nbsp;
           
         </Form>
@@ -252,8 +253,7 @@ function MyDog() {
                           <Button onClick={() => getDog(element.id)}>
                             Edit
                           </Button>
-                        </td>
-                        <td>
+                            &nbsp;
                           <Button onClick={() => deleteDog(element.id)}>
                             Delete
                           </Button>
