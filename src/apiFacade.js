@@ -37,7 +37,7 @@ function apiFacade() {
 
   const fetchData = (role) => {
     const options = makeOptions("GET", true); //True add's the token
-    return fetch(URL + `/api/info/${role}`, options).then(handleHttpErrors);
+    return fetch(URL + `/api/user/${role}`, options).then(handleHttpErrors);
   };
 
   const makeOptions = (method, addToken, body) => {
