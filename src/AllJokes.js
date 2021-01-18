@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+/*import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { URLJokes } from "./settings";
 
@@ -46,4 +46,4 @@ const AllJokes = () => {
     );
 }
 
-export default AllJokes;
+export default AllJokes;*/

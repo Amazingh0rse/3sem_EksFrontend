@@ -7,6 +7,7 @@ import AllScrape from "./AllScrape";
 import MyDog from "./MyDog";
 import AdminCrud from "./AdminCRUD";
 import Login from "./Login";
+import DogBreeds from "./DogBreeds";
 import { Switch, Route, NavLink, useHistory } from "react-router-dom";
 
 const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
@@ -18,15 +19,10 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
           <NavLink className="nav-link" exact activeClassName="selected" href="/" to="/">
             Home
         </NavLink>
-          <NavLink className="nav-link" activeClassName="selected" to="/jokes">
-            Jokes
-        </NavLink>
 
-          {isLoggedIn && (
-            <NavLink className="nav-link" activeClassName="selected" to="/scrape" href="/scrape">
-              Scrape
+          <NavLink className="nav-link" activeClassName="selected" to="/breed" href="/breed">
+              Dog Breeds
             </NavLink>
-          )}
 
           {isLoggedIn && (
             <NavLink className="nav-link" activeClassName="selected" to="/dog" href="/dog">
@@ -91,12 +87,10 @@ export default function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/jokes">
-            <Jokes />
+          <Route exact path="/breed">
+            <Breed />
           </Route>
-          <Route path="/scrape">
-            <Scrape />
-          </Route>
+
           <Route path="/dog">
             <Dog />
           </Route>
@@ -128,18 +122,10 @@ function Home() {
   );
 }
 
-function Jokes() {
+function Breed() {
   return (
     <div className="pageContent">
-      <AllJokes />
-    </div>
-  );
-}
-
-function Scrape() {
-  return (
-    <div className="pageContent">
-      <AllScrape />
+      <DogBreeds />
     </div>
   );
 }
@@ -155,7 +141,9 @@ function Dog() {
 function Admin() {
   return (
     <div className="pageContent">
-      <AdminCrud />
+      Todo: Add search data
+      <br/>
+      Admin-users can request information of the total number of requests made for the endpoints implemented above. This is of “business” value to see what kind of breeds is most in demand
     </div>
   );
 }
